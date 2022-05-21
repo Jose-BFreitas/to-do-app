@@ -1,24 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import { ThemeProvider } from "styled-components";
+import GlobalStyles from "./styles/GlobalStyles";
+import { light } from "./styles/Themes";
+import { Routes, Route } from "react-router-dom";
+import { Landing, Login, Register, Todo } from "./components/screens";
+import ProtectedRoute from "./components/ProtectedRoute";
+import Layout from "./components/Layout";
+import RequireAuth from "./components/RequireAuth";
+
+const ROLES = {
+  User: 2001,
+  Editor: 1984,
+  Admin: 5150,
+};
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <GlobalStyles />
+      <ThemeProvider theme={light}>
+        <Routes>
+          <Route path='/' element={<Layout />}>
+            {/* public routes */}
+            <Route path='/' element={<Landing />} />
+            <Route path='register' element={<Register />} />
+            <Route path='login' element={<Login />} />
+            {/* private routes */}
+
+            <Route element={<RequireAuth />}>
+              <Route path='todo' element={<Todo />} />
+            </Route>
+
+            {/* catch all*/}
+          </Route>
+        </Routes>
+      </ThemeProvider>
+    </>
   );
 }
 
