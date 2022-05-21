@@ -4,9 +4,9 @@ export const light = {
   bodyRgba: "255,255,255",
   textRgba: "32,32,32",
   primary: "#FFF8E5",
-  secondary: "#2F4858",
+  secondary: "#4A6B72",
 
-  greenSecondary: "#4A6B72",
+  greenSecondary: "#9BB1A3",
   greenPrimary: "#CCD4C1",
 
   carouselColor: "#EEEDDE",
