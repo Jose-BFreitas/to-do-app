@@ -1,9 +1,10 @@
 import React from "react";
 import styled from "styled-components";
-
+import { useNavigate } from "react-router-dom";
 const Section = styled.section`
   width: 100vw;
   background-color: ${(props) => props.theme.primary};
+  height: ${(props) => props.theme.navHeight};
 `;
 
 const NavBar = styled.nav`
@@ -43,12 +44,13 @@ const MenuItem = styled.li`
 `;
 
 const Navigation = () => {
+  const navigate = useNavigate();
   return (
     <Section>
       <NavBar>
         <Menu>
-          <MenuItem>Login</MenuItem>
-          <MenuItem>Register</MenuItem>
+          <MenuItem onClick={() => navigate("/login")}>Login</MenuItem>
+          <MenuItem onClick={() => navigate("/register")}>Register</MenuItem>
         </Menu>
       </NavBar>
     </Section>

@@ -1,14 +1,15 @@
 import { ThemeProvider } from "styled-components";
 import GlobalStyles from "./styles/GlobalStyles";
 import { light } from "./styles/Themes";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import { Landing, Login, Register, Todo } from "./components/screens";
-import ProtectedRoute from "./components/ProtectedRoute";
 import Layout from "./components/Layout";
 import RequireAuth from "./components/RequireAuth";
-import Navigation from "./components/Navigation";
+import { UserAuth } from "./context/AuthContext";
 
 function App() {
+  const { user } = UserAuth();
+
   return (
     <>
       <GlobalStyles />
@@ -16,9 +17,18 @@ function App() {
         <Routes>
           <Route path='/' element={<Layout />}>
             {/* public routes */}
-            <Route path='/' element={<Landing />} />
-            <Route path='register' element={<Register />} />
-            <Route path='login' element={<Login />} />
+            <Route
+              path='/'
+              element={user ? <Navigate to='/todo' /> : <Landing />}
+            />
+            <Route
+              path='register'
+              element={user ? <Navigate to='/todo' /> : <Register />}
+            />
+            <Route
+              path='login'
+              element={user ? <Navigate to='/todo' /> : <Login />}
+            />
 
             {/* private routes */}
 
