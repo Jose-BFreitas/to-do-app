@@ -91,6 +91,12 @@ const Button = styled.button`
     transform: translate(-2px, -2px);
     box-shadow: 2px 2px 0 2px ${(props) => props.theme.black};
   }
+
+  &:active {
+    background-color: rgba(155, 177, 163, 0.8);
+    transform: translate(0px, 0px);
+    box-shadow: none;
+  }
 `;
 
 const Divider = styled.div`
@@ -119,7 +125,7 @@ const SVGLogo = styled(Logo)`
   }
 `;
 
-const LogoContainer = styled.div`
+const LogoContainer = styled.form`
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -130,6 +136,9 @@ const LogoContainer = styled.div`
     transition: all 0.2s ease;
     &:hover {
       transform: scale(1.1);
+    }
+    &:active {
+      transform: scale(1);
     }
   }
 `;
@@ -152,6 +161,12 @@ const OptionText = styled.span`
   font-size: ${(props) => props.theme.fontsm};
   font-weight: 200;
   cursor: pointer;
+
+  transition: all 0.2s ease;
+
+  &:active {
+    transform: scale(0.9);
+  }
 `;
 
 const BoxCenter = styled.div``;
@@ -187,6 +202,7 @@ const Login = () => {
                 <Input
                   title='Password'
                   value={password}
+                  type='password'
                   setValue={setPassword}
                 />
                 <Button onClick={handleSubmit}>Login</Button>
@@ -201,7 +217,9 @@ const Login = () => {
                   <Google />
                 </LogoContainer>
                 <OptionContainer>
-                  <OptionText>Create an account</OptionText>
+                  <OptionText onClick={() => navigate("/register")}>
+                    Create an account
+                  </OptionText>
                   <OptionDivider />
                   <OptionText>Forgot password?</OptionText>
                 </OptionContainer>

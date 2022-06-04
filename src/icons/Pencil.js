@@ -1,10 +1,23 @@
 import * as React from "react";
+import styled from "styled-components";
+
+const SVG = styled.svg`
+  transition: all 0.2s ease;
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  &:active {
+    transform: scale(0.9);
+  }
+`;
 
 const Pencil = (props) => (
-  <svg
+  <SVG
     xmlns='http://www.w3.org/2000/svg'
-    viewBox='0 0 306.637 306.637'
+    viewBox='0 0 512.019 512.019'
     style={{
+      enableBackground: "new 0 0 512.019 512.019",
       cursor: "pointer",
     }}
     xmlSpace='preserve'
@@ -12,8 +25,8 @@ const Pencil = (props) => (
     height='1em'
     {...props}
   >
-    <path d='M12.809 238.52 0 306.637l68.118-12.809 184.277-184.277-55.309-55.309L12.809 238.52zm47.981 41.423-41.992 7.896 7.896-41.992L197.086 75.455l34.096 34.096L60.79 279.943zM251.329 0l-41.507 41.507 55.308 55.308 41.507-41.507L251.329 0zm-20.294 41.507 20.294-20.294 34.095 34.095-20.294 20.294-34.095-34.095z' />
-  </svg>
+    <path d='M350.316 80.852 0 431.166v80.843h80.841l350.316-350.316zM377.28 53.907 431.175.013l80.84 80.84-53.893 53.894z' />
+  </SVG>
 );
 
 export default Pencil;

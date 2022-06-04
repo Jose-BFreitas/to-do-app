@@ -29,12 +29,12 @@ const TextInput = styled.input`
   font-size: ${(props) => props.theme.fontmd};
 `;
 
-const Input = ({ title, value, setValue }) => {
+const Input = ({ title, value, setValue, type = "text" }) => {
   return (
     <Container>
       <Title>{title}</Title>
       <InputContainer>
-        <TextInput onChange={(e) => setValue(e.target.value)} />
+        <TextInput type={type} onChange={(e) => setValue(e.target.value)} />
       </InputContainer>
     </Container>
   );

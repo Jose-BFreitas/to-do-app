@@ -1,7 +1,19 @@
 import * as React from "react";
+import styled from "styled-components";
+
+const SVG = styled.svg`
+  transition: all 0.2s ease;
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  &:active {
+    transform: scale(0.9);
+  }
+`;
 
 const Ok = (props, onClick) => (
-  <svg
+  <SVG
     width='1em'
     height='1em'
     xmlns='http://www.w3.org/2000/svg'
@@ -19,7 +31,7 @@ const Ok = (props, onClick) => (
     <title>{"Confirm"}</title>
 
     <path d='m4 13 5 5L20 7' />
-  </svg>
+  </SVG>
 );
 
 export default Ok;

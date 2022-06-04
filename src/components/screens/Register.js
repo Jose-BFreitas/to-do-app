@@ -87,6 +87,12 @@ const Button = styled.button`
     transform: translate(-2px, -2px);
     box-shadow: 2px 2px 0 2px ${(props) => props.theme.black};
   }
+
+  &:active {
+    background-color: rgba(155, 177, 163, 0.8);
+    transform: translate(0px, 0px);
+    box-shadow: none;
+  }
 `;
 
 const SVGLogo = styled(Logo)`
@@ -147,11 +153,13 @@ const Register = () => {
                   title='Password'
                   value={password}
                   setValue={setPassword}
+                  type='password'
                 />
                 <Input
                   title='Confirm Password'
                   value={confirmPw}
                   setValue={setConfirmPw}
+                  type='password'
                 />
 
                 <Button onClick={handleSubmit}>Register</Button>
