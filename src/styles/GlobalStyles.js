@@ -14,8 +14,8 @@ html{
 body{
     font-family: 'Sora',sans-serif;
     overflow-x: hidden;
-    height: 100vh;
     background-color: #FFF8E5;
+    height: 100vh;
 }
 /* width */
 ::-webkit-scrollbar {
