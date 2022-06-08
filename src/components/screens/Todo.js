@@ -51,7 +51,6 @@ const WelcomeText = styled.h2`
 `;
 
 const TopicSection = styled.div`
-  margin-top: 1.5rem;
   width: 20rem;
   margin-right: 2.5rem;
 `;
@@ -128,6 +127,18 @@ const Input = styled.input`
   color: ${(props) => props.theme.black};
 `;
 
+const TopicInput = styled(Input)`
+  background-color: ${(props) => props.theme.secondary};
+  width: 18rem;
+  margin: 0.5rem 0;
+  color: white;
+  z-index: 99;
+  &::placeholder {
+    color: white;
+    opacity: 0.6;
+  }
+`;
+
 const SubTopicText = styled.span`
   color: ${(props) => (props.selected ? "black" : "none")};
   text-decoration: ${(props) => (props.selected ? "line-through" : "none")};
@@ -191,6 +202,13 @@ const StateCircle = styled.div`
   border-radius: 50%;
 
   transition: all 0.2s ease;
+`;
+
+const CrossInput = styled(Cross)`
+  z-index: -5;
+
+  transform: ${(props) =>
+    props.translate ? "translateX(-2rem)" : "translateX(0rem)"};
 `;
 
 const Todo = () => {
@@ -662,9 +680,13 @@ const Todo = () => {
           Good morning!
         </WelcomeText>
         <WelcomeText> Enjoy your planning!</WelcomeText>
-
-        <input onChange={(e) => setTopicText(e.currentTarget.value)} />
-        <button onClick={handleSubmitTopic}>Submit</button>
+        <>
+          <TopicInput
+            placeholder='Add a Topic...'
+            onChange={(e) => setTopicText(e.currentTarget.value)}
+          />
+          <CrossInput translate={topicText === ""} />
+        </>
 
         <div style={{ display: "flex" }}>
           <TopicSection>
